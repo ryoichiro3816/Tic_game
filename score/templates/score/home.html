@@ -1,0 +1,36 @@
+{% extends 'score/base.html' %}
+{% load static %}
+
+{% block authenticated %}
+<div class = "upper-right-nav">
+  <div class="upnav4"><h1>○×Game : </h1></div>
+  {%  if user.is_authenticated %}
+  <a href="{% url 'logout' %}"><h1>Log Out</h1></a>
+  {% else %}
+    <div class = "upnav1"><a href="{% url 'score-home' %}"><h1>Free Play</h1></a></div>
+    <div class = "upnav2"><a href="{% url 'login' %}"><h1>Log In</h1></a></div>
+    <div class = "upnav3"><a href="{% url 'signup' %}"><h1>Sign Up</h1></a></div>
+  {% endif %}
+</div>
+
+{% endblock authenticated %}
+
+ {% block body %}
+  <div class="container">
+    <div class="action">
+      <div class="status">× is next</div>
+      <div class="reset">Reset</div>
+    </div>
+    <div class="game-grid">
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+      <div class="game-cell"></div>
+    </div>
+  </div>
+   {% endblock body %}
