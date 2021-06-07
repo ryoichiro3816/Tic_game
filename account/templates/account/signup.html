@@ -1,0 +1,41 @@
+{% extends 'score/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block authenticated %}
+ <div class = "upper-right-nav">
+  <div class="upnav4"><h1>○×Game : </h1></div>
+  {%  if user.is_authenticated %}
+  <a href="{% url 'logout' %}"><h1>Log Out</h1></a>
+  {% else %}
+    <div class = "upnav1"><a href="{% url 'score-home' %}"><h1>Free Play</h1></a></div>
+    <div class = "upnav2"><a href="{% url 'login' %}"><h1>Log In</h1></a></div>
+    <div class = "upnav3"><a href="{% url 'signup' %}"><h1>Sign Up</h1></a></div>
+  {% endif %}
+</div>
+{% endblock authenticated %}
+
+
+
+
+ {% block body %}
+
+
+    <div class="signup-container">
+      <div class="signup-title"><h1>Sign up now</h1>
+      </div>
+
+      <div class="form-bottom">
+      	<form method='POST' class="signup-form">
+      		{% csrf_token %}
+      		{{ form|crispy }}
+      		<button type="submit">
+      			<a href="" class="btn btn-radius-solid">Sign me up!<i class="fas fa-angle-right fa-position-right"></i></a>
+      		</button>
+      	</form>
+      	
+      </div>
+    </div>
+
+
+ {% endblock body %}
